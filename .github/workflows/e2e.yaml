@@ -1,0 +1,41 @@
+name: Kuttl Test
+
+on:
+  push:
+    branches:
+      - 'main'
+  pull_request:
+    branches:
+      - 'main'
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  run-e2etest:
+    strategy:
+      fail-fast: false
+
+      matrix:
+        k8s-version: [v1.25.2, v1.22.1]
+        n4k-chart-version: [1.6.4, v1.5.13]
+
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Prepare environment
+        run: K8S_VERSION=${{ matrix.k8s-version }} make kind-create-cluster
+
+      - name: Clone Kyverno Policies repo
+        uses: actions/checkout@8f4b7f84864484a7bf31766abe9204da3cbe65b3
+        with:
+          repository: nirmata/kyverno-policies
+          path: kyverno-policies
+          # The target branch of a pull request or the branch/tag of a push
+          ref: ${{ github.base_ref || github.ref_name }}
+
+      - name: Test with kuttl
+        run: N4K_VERSION=${{ matrix.n4k-chart-version }} make test-kuttl
