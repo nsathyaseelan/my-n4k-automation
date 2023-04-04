@@ -38,4 +38,4 @@ jobs:
           ref: ${{ github.base_ref || github.ref_name }}
 
       - name: Test with kuttl
-        run: N4K_VERSION=${{ matrix.n4k-chart-version }} make test-kuttl
+        run: N4K_VERSION=${{ matrix.n4k-chart-version }} N4K_LICENSE_KEY=${{ secrets.N4K_CI_LICENSE }} make test-kuttl
