@@ -43,5 +43,5 @@ jobs:
         run: N4K_VERSION=${{ matrix.n4k-chart-version }} make test-kuttl
 
       - name: Test with kuttl-upgrade
-        if: ${{ matrix.n4k-chart-version }} != 1.6.4
+        if: ${{ matrix.n4k-chart-version }} == 1.6.4
         run: N4K_VERSION=${{ matrix.n4k-chart-version }} make test-kuttl-upgrade
