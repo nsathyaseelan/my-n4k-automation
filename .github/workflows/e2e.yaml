@@ -21,7 +21,7 @@ jobs:
 
       matrix:
         k8s-version: [v1.26.3, v1.25.8, v1.24.12, v1.23.17, v1.22.17]
-        n4k-chart-version: [1.6.4, v1.5.13]
+        n4k-chart-version: [1.6.6, v1.5.13]
 
     runs-on: ubuntu-latest
     steps:
@@ -40,8 +40,8 @@ jobs:
           ref: ${{ github.base_ref || github.ref_name }}
 
       - name: Test with kuttl
-        run: N4K_VERSION=${{ matrix.n4k-chart-version }} make test-kuttl
+        run: N4K_VERSION=${{ matrix.n4k-chart-version }} N4K_LICENSE_KEY=${{ secrets.N4K_CI_LICENSE }} make test-kuttl
 
       - name: Test with kuttl-upgrade
-        if: ${{ matrix.n4k-chart-version }} == 1.6.4
+        if: ${{ matrix.n4k-chart-version }} != 1.6.4
         run: N4K_VERSION=${{ matrix.n4k-chart-version }} make test-kuttl-upgrade
