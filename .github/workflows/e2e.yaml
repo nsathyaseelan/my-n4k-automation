@@ -4,8 +4,6 @@ on:
   push:
     branches:
       - 'main'
-      - 'new-brnach'
-      - 'test-branch'
   pull_request:
     branches:
       - 'main'
