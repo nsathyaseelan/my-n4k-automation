@@ -4,9 +4,13 @@ on:
   push:
     branches:
       - 'main'
+      - 'new-brnach'
+      - 'test-branch'
   pull_request:
     branches:
       - 'main'
+      - 'new-brnach'
+      - 'test-branch'
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -39,3 +43,7 @@ jobs:
 
       - name: Test with kuttl
         run: N4K_VERSION=${{ matrix.n4k-chart-version }} make test-kuttl
+
+      - name: Test with kuttl-upgrade
+        if: ${{ matrix.n4k-chart-version }} != '1.6.4'
+        run: N4K_VERSION=${{ matrix.n4k-chart-version }} make test-kuttl-upgrade

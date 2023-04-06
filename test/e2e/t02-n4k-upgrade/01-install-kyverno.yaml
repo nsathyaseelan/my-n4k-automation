@@ -1,0 +1,7 @@
+apiVersion: kuttl.dev/v1beta1
+kind: TestStep
+commands:
+- script: |
+    helm repo add nirmata https://nirmata.github.io/kyverno-charts
+    helm repo update nirmata
+    helm install kyverno nirmata/kyverno -n kyverno --create-namespace --set licenseManager.licenseKey=ifkbGamY65BgJzbauN2dcsx0uDZqK39kDi618sovyqhkc+A2mEmLLj8T6YifVbvY9iARbJjEno/5XyBgKlSS3IIvOcd3dt2ZCq395e4tAxXzIvbiTxKOiPCuPukx5qDUwG8VlnHWRkTytG5lYa3kcLVtxC6a3dwxodvjSD/q6R6WsMScg5VA2Gx8b5YDOR+8VPF52po3HFwITqXDMm7f6FXv1k+d4dXM7ShM9btcEV4SFAsqcIWwEcpCleeaOEPaFQjHXs1pcfiIGdlHMXPSDvRaIo/OwBJPjnEH8jejfF4K0fcxxoJ51/78OUAlvy8pIF9O4cuyi4UGIi3B9wSTqg== --version=$N4K_VERSION
