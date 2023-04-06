@@ -47,7 +47,7 @@ test-kuttl: $(KUTTL) ## Run kuttl tests
 .PHONY: test-kuttl-upgrade
 test-kuttl: $(KUTTL) ## Run kuttl tests
 	@echo Running kuttl tests... >&2
-	@$(KUTTL) test --config kuttl-test-upgrade.yaml
+	@$(KUTTL) test --config kuttl-test.yaml
 
 .PHONY: kuttl-test-all
 kuttl-test-all: test-kuttl test-kuttl-upgrade
