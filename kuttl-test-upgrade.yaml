@@ -1,7 +1,7 @@
 apiVersion: kuttl.dev/v1beta1
 kind: TestSuite
 testDirs:
-- n4k-installation
+- t01-n4k-installation
 startKIND: false
 timeout: 90
 parallel: 1
