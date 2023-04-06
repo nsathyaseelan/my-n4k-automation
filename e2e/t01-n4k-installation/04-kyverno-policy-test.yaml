@@ -2,5 +2,5 @@ apiVersion: kuttl.dev/v1beta1
 kind: TestStep
 commands:
 - script: |
-    cd ../../../kyverno-policies
+    cd ../../kyverno-policies
     make test-kuttl
