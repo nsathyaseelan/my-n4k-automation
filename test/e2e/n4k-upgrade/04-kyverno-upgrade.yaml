@@ -1,0 +1,6 @@
+apiVersion: kuttl.dev/v1beta1
+kind: TestStep
+commands:
+- script: |
+    helm repo update nirmata 
+    helm upgrade kyverno nirmata/kyverno -n kyverno --create-namespace --set licenseManager.licenseKey=$N4K_LICENSE_KEY
