@@ -42,9 +42,7 @@ clean-tools:
 .PHONY: test-kuttl
 test-kuttl: $(KUTTL) ## Run kuttl tests
 	@echo Running kuttl tests... >&2
-    @$(KUTTL) test --config kuttl-test.yaml
-
-# @$(KUTTL) test --start-kind=false ./e2e/t01-n4k-installation
+	@$(KUTTL) test --config kuttl-test.yaml
 
 .PHONY: test-kuttl-upgrade
 test-kuttl-upgrade: $(KUTTL) ## Run kuttl tests
