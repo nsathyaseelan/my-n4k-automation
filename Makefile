@@ -42,7 +42,8 @@ clean-tools:
 .PHONY: test-kuttl
 test-kuttl: $(KUTTL) ## Run kuttl tests
 	@echo Running kuttl tests... >&2
-	@$(KUTTL) test --config kuttl-test.yaml
+	@$(KUTTL) test /e2e
+# @$(KUTTL) test --config kuttl-test.yaml
 
 .PHONY: test-kuttl-upgrade
 test-kuttl-upgrade: $(KUTTL) ## Run kuttl tests
